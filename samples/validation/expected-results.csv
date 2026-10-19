@@ -1,0 +1,105 @@
+file,mode,expected_label,expected_id,expected_color,bbox,source,source_file
+sign-00-speed_20-1.png,Full road scene,Speed limit 20 km/h,speed_20,,"6,5,30,28",GTSRB official test,04795.ppm
+sign-00-speed_20-2.png,Full road scene,Speed limit 20 km/h,speed_20,,"9,11,103,109",GTSRB official test,03420.ppm
+sign-01-speed_30-1.png,Full road scene,Speed limit 30 km/h,speed_30,,"6,6,37,37",GTSRB official test,02301.ppm
+sign-01-speed_30-2.png,Full road scene,Speed limit 30 km/h,speed_30,,"5,5,21,23",GTSRB official test,03638.ppm
+sign-02-speed_50-1.png,Full road scene,Speed limit 50 km/h,speed_50,,"5,6,41,48",GTSRB official test,08222.ppm
+sign-02-speed_50-2.png,Full road scene,Speed limit 50 km/h,speed_50,,"5,6,48,51",GTSRB official test,09406.ppm
+sign-03-speed_60-1.png,Full road scene,Speed limit 60 km/h,speed_60,,"5,5,31,31",GTSRB official test,04998.ppm
+sign-03-speed_60-2.png,Full road scene,Speed limit 60 km/h,speed_60,,"5,5,23,24",GTSRB official test,04588.ppm
+sign-04-speed_70-1.png,Full road scene,Speed limit 70 km/h,speed_70,,"6,6,23,23",GTSRB official test,00550.ppm
+sign-04-speed_70-2.png,Full road scene,Speed limit 70 km/h,speed_70,,"6,6,46,46",GTSRB official test,06896.ppm
+sign-05-speed_80-1.png,Full road scene,Speed limit 80 km/h,speed_80,,"5,5,22,21",GTSRB official test,02716.ppm
+sign-05-speed_80-2.png,Full road scene,Speed limit 80 km/h,speed_80,,"5,5,46,44",GTSRB official test,00213.ppm
+sign-06-end_speed_80-1.png,Full road scene,End of 80 km/h limit,end_speed_80,,"6,6,37,41",GTSRB official test,11745.ppm
+sign-06-end_speed_80-2.png,Full road scene,End of 80 km/h limit,end_speed_80,,"6,5,24,23",GTSRB official test,06255.ppm
+sign-07-speed_100-1.png,Full road scene,Speed limit 100 km/h,speed_100,,"6,5,25,26",GTSRB official test,05952.ppm
+sign-07-speed_100-2.png,Full road scene,Speed limit 100 km/h,speed_100,,"5,6,37,38",GTSRB official test,09072.ppm
+sign-08-speed_120-1.png,Full road scene,Speed limit 120 km/h,speed_120,,"5,6,36,37",GTSRB official test,04051.ppm
+sign-08-speed_120-2.png,Full road scene,Speed limit 120 km/h,speed_120,,"5,6,31,30",GTSRB official test,08271.ppm
+sign-09-no_passing-1.png,Full road scene,No overtaking,no_passing,,"6,6,25,28",GTSRB official test,04346.ppm
+sign-09-no_passing-2.png,Full road scene,No overtaking,no_passing,,"6,5,32,32",GTSRB official test,01158.ppm
+sign-10-no_passing_trucks-1.png,Full road scene,No overtaking by trucks,no_passing_trucks,,"5,5,39,34",GTSRB official test,01460.ppm
+sign-10-no_passing_trucks-2.png,Full road scene,No overtaking by trucks,no_passing_trucks,,"5,5,46,39",GTSRB official test,07209.ppm
+sign-11-priority_crossing-1.png,Full road scene,Priority at next junction,priority_crossing,,"11,11,120,113",GTSRB official test,10010.ppm
+sign-11-priority_crossing-2.png,Full road scene,Priority at next junction,priority_crossing,,"5,6,46,45",GTSRB official test,03841.ppm
+sign-12-priority_road-1.png,Full road scene,Priority road,priority_road,,"13,12,137,134",GTSRB official test,04084.ppm
+sign-12-priority_road-2.png,Full road scene,Priority road,priority_road,,"5,5,31,31",GTSRB official test,07913.ppm
+sign-13-yield-1.png,Full road scene,Give way,yield,,"6,6,38,35",GTSRB official test,01387.ppm
+sign-13-yield-2.png,Full road scene,Give way,yield,,"5,5,36,35",GTSRB official test,03295.ppm
+sign-14-stop-1.png,Full road scene,Stop,stop,,"5,5,47,48",GTSRB official test,09742.ppm
+sign-14-stop-2.png,Full road scene,Stop,stop,,"5,5,57,56",GTSRB official test,08448.ppm
+sign-15-no_vehicles-1.png,Full road scene,No vehicles,no_vehicles,,"6,7,65,67",GTSRB official test,00531.ppm
+sign-15-no_vehicles-2.png,Full road scene,No vehicles,no_vehicles,,"6,6,23,23",GTSRB official test,08737.ppm
+sign-16-no_heavy_vehicles-1.png,Full road scene,No vehicles over 3.5 t,no_heavy_vehicles,,"6,7,65,66",GTSRB official test,07474.ppm
+sign-16-no_heavy_vehicles-2.png,Full road scene,No vehicles over 3.5 t,no_heavy_vehicles,,"5,6,53,56",GTSRB official test,05664.ppm
+sign-17-no_entry-1.png,Full road scene,No entry,no_entry,,"5,6,26,27",GTSRB official test,02994.ppm
+sign-17-no_entry-2.png,Full road scene,No entry,no_entry,,"5,5,20,24",GTSRB official test,10371.ppm
+sign-18-caution-1.png,Full road scene,General caution,caution,,"6,5,60,56",GTSRB official test,01769.ppm
+sign-18-caution-2.png,Full road scene,General caution,caution,,"6,6,36,34",GTSRB official test,06532.ppm
+sign-19-curve_left-1.png,Full road scene,Bend to the left,curve_left,,"7,5,64,58",GTSRB official test,08398.ppm
+sign-19-curve_left-2.png,Full road scene,Bend to the left,curve_left,,"5,6,43,42",GTSRB official test,00368.ppm
+sign-20-curve_right-1.png,Full road scene,Bend to the right,curve_right,,"8,8,87,87",GTSRB official test,11266.ppm
+sign-20-curve_right-2.png,Full road scene,Bend to the right,curve_right,,"6,6,38,41",GTSRB official test,06702.ppm
+sign-21-double_curve-1.png,Full road scene,Double bend,double_curve,,"5,6,31,32",GTSRB official test,00016.ppm
+sign-21-double_curve-2.png,Full road scene,Double bend,double_curve,,"5,5,40,40",GTSRB official test,07910.ppm
+sign-22-bumpy_road-1.png,Full road scene,Uneven road,bumpy_road,,"5,6,26,23",GTSRB official test,11976.ppm
+sign-22-bumpy_road-2.png,Full road scene,Uneven road,bumpy_road,,"6,6,41,35",GTSRB official test,12592.ppm
+sign-23-slippery-1.png,Full road scene,Slippery road,slippery,,"5,5,49,45",GTSRB official test,07113.ppm
+sign-23-slippery-2.png,Full road scene,Slippery road,slippery,,"6,6,53,50",GTSRB official test,10352.ppm
+sign-24-narrows_right-1.png,Full road scene,Road narrows on right,narrows_right,,"9,10,98,97",GTSRB official test,11431.ppm
+sign-24-narrows_right-2.png,Full road scene,Road narrows on right,narrows_right,,"6,6,43,42",GTSRB official test,12602.ppm
+sign-25-road_work-1.png,Full road scene,Road works,road_work,,"10,9,99,91",GTSRB official test,03379.ppm
+sign-25-road_work-2.png,Full road scene,Road works,road_work,,"6,5,46,42",GTSRB official test,07125.ppm
+sign-26-signals_ahead-1.png,Full road scene,Traffic signals ahead,signals_ahead,,"6,5,37,36",GTSRB official test,06200.ppm
+sign-26-signals_ahead-2.png,Full road scene,Traffic signals ahead,signals_ahead,,"7,6,65,65",GTSRB official test,06334.ppm
+sign-27-pedestrians-1.png,Full road scene,Pedestrian crossing,pedestrians,,"18,17,196,175",GTSRB official test,03250.ppm
+sign-27-pedestrians-2.png,Full road scene,Pedestrian crossing,pedestrians,,"14,11,141,125",GTSRB official test,07553.ppm
+sign-28-children-1.png,Full road scene,Children crossing,children,,"6,5,28,25",GTSRB official test,02219.ppm
+sign-28-children-2.png,Full road scene,Children crossing,children,,"5,6,40,41",GTSRB official test,02839.ppm
+sign-29-bicycles-1.png,Full road scene,Bicycle crossing,bicycles,,"9,8,89,80",GTSRB official test,08194.ppm
+sign-29-bicycles-2.png,Full road scene,Bicycle crossing,bicycles,,"8,7,89,81",GTSRB official test,07953.ppm
+sign-30-ice_snow-1.png,Full road scene,Ice or snow,ice_snow,,"6,5,24,23",GTSRB official test,01402.ppm
+sign-30-ice_snow-2.png,Full road scene,Ice or snow,ice_snow,,"6,6,48,48",GTSRB official test,04639.ppm
+sign-31-animals-1.png,Full road scene,Wild animals,animals,,"5,5,28,25",GTSRB official test,05325.ppm
+sign-31-animals-2.png,Full road scene,Wild animals,animals,,"6,6,32,28",GTSRB official test,08620.ppm
+sign-32-end_restrictions-1.png,Full road scene,End of restrictions,end_restrictions,,"5,6,33,34",GTSRB official test,00650.ppm
+sign-32-end_restrictions-2.png,Full road scene,End of restrictions,end_restrictions,,"5,5,37,36",GTSRB official test,11308.ppm
+sign-33-turn_right-1.png,Full road scene,Turn right ahead,turn_right,,"5,6,25,30",GTSRB official test,06077.ppm
+sign-33-turn_right-2.png,Full road scene,Turn right ahead,turn_right,,"5,5,43,42",GTSRB official test,05354.ppm
+sign-34-turn_left-1.png,Full road scene,Turn left ahead,turn_left,,"6,5,45,42",GTSRB official test,07637.ppm
+sign-34-turn_left-2.png,Full road scene,Turn left ahead,turn_left,,"5,6,34,34",GTSRB official test,02643.ppm
+sign-35-straight-1.png,Full road scene,Straight ahead,straight,,"7,7,62,65",GTSRB official test,00673.ppm
+sign-35-straight-2.png,Full road scene,Straight ahead,straight,,"6,5,45,44",GTSRB official test,09571.ppm
+sign-36-straight_right-1.png,Full road scene,Straight or right,straight_right,,"7,6,66,65",GTSRB official test,11127.ppm
+sign-36-straight_right-2.png,Full road scene,Straight or right,straight_right,,"7,8,75,76",GTSRB official test,10562.ppm
+sign-37-straight_left-1.png,Full road scene,Straight or left,straight_left,,"6,5,27,27",GTSRB official test,05420.ppm
+sign-37-straight_left-2.png,Full road scene,Straight or left,straight_left,,"5,6,22,23",GTSRB official test,06689.ppm
+sign-38-keep_right-1.png,Full road scene,Keep right,keep_right,,"6,5,36,37",GTSRB official test,05107.ppm
+sign-38-keep_right-2.png,Full road scene,Keep right,keep_right,,"5,6,21,23",GTSRB official test,01908.ppm
+sign-39-keep_left-1.png,Full road scene,Keep left,keep_left,,"5,6,40,46",GTSRB official test,05555.ppm
+sign-39-keep_left-2.png,Full road scene,Keep left,keep_left,,"5,5,37,41",GTSRB official test,00458.ppm
+sign-40-roundabout-1.png,Full road scene,Roundabout,roundabout,,"6,5,42,42",GTSRB official test,08031.ppm
+sign-40-roundabout-2.png,Full road scene,Roundabout,roundabout,,"5,6,39,41",GTSRB official test,05992.ppm
+sign-41-end_no_passing-1.png,Full road scene,End of no overtaking,end_no_passing,,"6,6,47,47",GTSRB official test,08832.ppm
+sign-41-end_no_passing-2.png,Full road scene,End of no overtaking,end_no_passing,,"6,6,25,25",GTSRB official test,01763.ppm
+sign-42-end_no_passing_trucks-1.png,Full road scene,End of truck overtaking restriction,end_no_passing_trucks,,"6,5,30,30",GTSRB official test,10439.ppm
+sign-42-end_no_passing_trucks-2.png,Full road scene,End of truck overtaking restriction,end_no_passing_trucks,,"5,5,29,31",GTSRB official test,10283.ppm
+signal-red-1.jpg,Close-up traffic signal,Red signal (colour check only),,red,,TIER IV tutorial validation,traffic_light_sample_dataset/val/red/42.jpg
+signal-red-2.jpg,Close-up traffic signal,Red signal (colour check only),,red,,TIER IV tutorial validation,traffic_light_sample_dataset/val/red/75.jpg
+signal-red-3.jpg,Close-up traffic signal,Red signal (colour check only),,red,,TIER IV tutorial validation,traffic_light_sample_dataset/val/red/18.jpg
+signal-red-4.jpg,Close-up traffic signal,Red signal (colour check only),,red,,TIER IV tutorial validation,traffic_light_sample_dataset/val/red/73.jpg
+signal-red-5.jpg,Close-up traffic signal,Red signal (colour check only),,red,,TIER IV tutorial validation,traffic_light_sample_dataset/val/red/48.jpg
+signal-red-6.jpg,Close-up traffic signal,Red signal (colour check only),,red,,TIER IV tutorial validation,traffic_light_sample_dataset/val/red/33.jpg
+signal-yellow-1.jpg,Close-up traffic signal,Yellow signal (colour check only),,yellow,,TIER IV tutorial validation,traffic_light_sample_dataset/val/yellow/52.jpg
+signal-yellow-2.jpg,Close-up traffic signal,Yellow signal (colour check only),,yellow,,TIER IV tutorial validation,traffic_light_sample_dataset/val/yellow/71.jpg
+signal-yellow-3.jpg,Close-up traffic signal,Yellow signal (colour check only),,yellow,,TIER IV tutorial validation,traffic_light_sample_dataset/val/yellow/64.jpg
+signal-yellow-4.jpg,Close-up traffic signal,Yellow signal (colour check only),,yellow,,TIER IV tutorial validation,traffic_light_sample_dataset/val/yellow/15.jpg
+signal-yellow-5.jpg,Close-up traffic signal,Yellow signal (colour check only),,yellow,,TIER IV tutorial validation,traffic_light_sample_dataset/val/yellow/3.jpg
+signal-yellow-6.jpg,Close-up traffic signal,Yellow signal (colour check only),,yellow,,TIER IV tutorial validation,traffic_light_sample_dataset/val/yellow/5.jpg
+signal-green-1.jpg,Close-up traffic signal,Green signal (colour check only),,green,,TIER IV tutorial validation,traffic_light_sample_dataset/val/green/28.jpg
+signal-green-2.jpg,Close-up traffic signal,Green signal (colour check only),,green,,TIER IV tutorial validation,traffic_light_sample_dataset/val/green/44.jpg
+signal-green-3.jpg,Close-up traffic signal,Green signal (colour check only),,green,,TIER IV tutorial validation,traffic_light_sample_dataset/val/green/81.jpg
+signal-green-4.jpg,Close-up traffic signal,Green signal (colour check only),,green,,TIER IV tutorial validation,traffic_light_sample_dataset/val/green/49.jpg
+signal-green-5.jpg,Close-up traffic signal,Green signal (colour check only),,green,,TIER IV tutorial validation,traffic_light_sample_dataset/val/green/32.jpg
+signal-green-6.jpg,Close-up traffic signal,Green signal (colour check only),,green,,TIER IV tutorial validation,traffic_light_sample_dataset/val/green/4.jpg

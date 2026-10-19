@@ -61,6 +61,13 @@ Use **Full road scene** for signs and road photographs. Use **Close-up traffic s
 for a tightly cropped signal housing. “Inspect small signs” adds overlapping image
 crops and takes longer. The six included samples are selected teaching examples.
 
+For manual validation, open the [104-image gallery](http://127.0.0.1:8765/samples/validation/index.html)
+or download [the sample ZIP](samples/traffic-vision-validation-pack.zip). It contains
+86 sign crops across all 43 GTSRB classes and 18 signal colour crops, with an
+[answer key](samples/validation/expected-results.csv). Use the mode listed for each
+image. This selection was not run through recognition or selected for success;
+upstream training overlap is unknown. It has no verified arrow-lamp direction labels.
+
 ## How recognition works
 
 ```mermaid

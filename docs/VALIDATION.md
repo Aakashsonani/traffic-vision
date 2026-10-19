@@ -31,6 +31,20 @@ signal classifier improved abstention and colour recognition compared with using
 lamp localizer alone. These changes were developed against the sample check, so it
 cannot serve as a final held-out test.
 
+## Manual image pack
+
+`samples/validation/` contains 104 additional public crops: two images from each
+of 43 GTSRB classes and six signals per colour. Prior development-check and demo
+images were excluded. The pack was selected with seed 20261019 without running
+recognition or filtering by its predictions. `expected-results.csv` records labels,
+required mode and original source filenames. `sign-evaluation.json` retains the
+original sign bounding boxes for optional object evaluation. Signal labels establish
+colour only; arrow-lamp and urban prohibition ground truth is not included.
+
+Open http://127.0.0.1:8765/samples/validation/index.html or extract
+`samples/traffic-vision-validation-pack.zip`. These crops still have unknown overlap
+with upstream model training and do not establish accuracy on complete local scenes.
+
 ## Reproduce
 
 Download these sources into `data/` (approximately 87 MB):

@@ -1,0 +1,1382 @@
+{
+  "name": "Public GTSRB manual-check pack",
+  "scope": "86 public sign crops, 43 classes; upstream training overlap unknown; not road-scene accuracy",
+  "images": [
+    {
+      "file": "sign-00-speed_20-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_20",
+          "bbox": [
+            6,
+            5,
+            30,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-00-speed_20-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_20",
+          "bbox": [
+            9,
+            11,
+            103,
+            109
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-01-speed_30-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_30",
+          "bbox": [
+            6,
+            6,
+            37,
+            37
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-01-speed_30-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_30",
+          "bbox": [
+            5,
+            5,
+            21,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-02-speed_50-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_50",
+          "bbox": [
+            5,
+            6,
+            41,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-02-speed_50-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_50",
+          "bbox": [
+            5,
+            6,
+            48,
+            51
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-03-speed_60-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_60",
+          "bbox": [
+            5,
+            5,
+            31,
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-03-speed_60-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_60",
+          "bbox": [
+            5,
+            5,
+            23,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-04-speed_70-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_70",
+          "bbox": [
+            6,
+            6,
+            23,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-04-speed_70-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_70",
+          "bbox": [
+            6,
+            6,
+            46,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-05-speed_80-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_80",
+          "bbox": [
+            5,
+            5,
+            22,
+            21
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-05-speed_80-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_80",
+          "bbox": [
+            5,
+            5,
+            46,
+            44
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-06-end_speed_80-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_speed_80",
+          "bbox": [
+            6,
+            6,
+            37,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-06-end_speed_80-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_speed_80",
+          "bbox": [
+            6,
+            5,
+            24,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-07-speed_100-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_100",
+          "bbox": [
+            6,
+            5,
+            25,
+            26
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-07-speed_100-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_100",
+          "bbox": [
+            5,
+            6,
+            37,
+            38
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-08-speed_120-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_120",
+          "bbox": [
+            5,
+            6,
+            36,
+            37
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-08-speed_120-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "speed_120",
+          "bbox": [
+            5,
+            6,
+            31,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-09-no_passing-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_passing",
+          "bbox": [
+            6,
+            6,
+            25,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-09-no_passing-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_passing",
+          "bbox": [
+            6,
+            5,
+            32,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-10-no_passing_trucks-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_passing_trucks",
+          "bbox": [
+            5,
+            5,
+            39,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-10-no_passing_trucks-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_passing_trucks",
+          "bbox": [
+            5,
+            5,
+            46,
+            39
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-11-priority_crossing-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "priority_crossing",
+          "bbox": [
+            11,
+            11,
+            120,
+            113
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-11-priority_crossing-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "priority_crossing",
+          "bbox": [
+            5,
+            6,
+            46,
+            45
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-12-priority_road-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "priority_road",
+          "bbox": [
+            13,
+            12,
+            137,
+            134
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-12-priority_road-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "priority_road",
+          "bbox": [
+            5,
+            5,
+            31,
+            31
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-13-yield-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "yield",
+          "bbox": [
+            6,
+            6,
+            38,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-13-yield-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "yield",
+          "bbox": [
+            5,
+            5,
+            36,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-14-stop-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "stop",
+          "bbox": [
+            5,
+            5,
+            47,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-14-stop-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "stop",
+          "bbox": [
+            5,
+            5,
+            57,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-15-no_vehicles-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_vehicles",
+          "bbox": [
+            6,
+            7,
+            65,
+            67
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-15-no_vehicles-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_vehicles",
+          "bbox": [
+            6,
+            6,
+            23,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-16-no_heavy_vehicles-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_heavy_vehicles",
+          "bbox": [
+            6,
+            7,
+            65,
+            66
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-16-no_heavy_vehicles-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_heavy_vehicles",
+          "bbox": [
+            5,
+            6,
+            53,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-17-no_entry-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_entry",
+          "bbox": [
+            5,
+            6,
+            26,
+            27
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-17-no_entry-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "no_entry",
+          "bbox": [
+            5,
+            5,
+            20,
+            24
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-18-caution-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "caution",
+          "bbox": [
+            6,
+            5,
+            60,
+            56
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-18-caution-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "caution",
+          "bbox": [
+            6,
+            6,
+            36,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-19-curve_left-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "curve_left",
+          "bbox": [
+            7,
+            5,
+            64,
+            58
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-19-curve_left-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "curve_left",
+          "bbox": [
+            5,
+            6,
+            43,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-20-curve_right-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "curve_right",
+          "bbox": [
+            8,
+            8,
+            87,
+            87
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-20-curve_right-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "curve_right",
+          "bbox": [
+            6,
+            6,
+            38,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-21-double_curve-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "double_curve",
+          "bbox": [
+            5,
+            6,
+            31,
+            32
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-21-double_curve-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "double_curve",
+          "bbox": [
+            5,
+            5,
+            40,
+            40
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-22-bumpy_road-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "bumpy_road",
+          "bbox": [
+            5,
+            6,
+            26,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-22-bumpy_road-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "bumpy_road",
+          "bbox": [
+            6,
+            6,
+            41,
+            35
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-23-slippery-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "slippery",
+          "bbox": [
+            5,
+            5,
+            49,
+            45
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-23-slippery-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "slippery",
+          "bbox": [
+            6,
+            6,
+            53,
+            50
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-24-narrows_right-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "narrows_right",
+          "bbox": [
+            9,
+            10,
+            98,
+            97
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-24-narrows_right-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "narrows_right",
+          "bbox": [
+            6,
+            6,
+            43,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-25-road_work-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "road_work",
+          "bbox": [
+            10,
+            9,
+            99,
+            91
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-25-road_work-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "road_work",
+          "bbox": [
+            6,
+            5,
+            46,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-26-signals_ahead-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "signals_ahead",
+          "bbox": [
+            6,
+            5,
+            37,
+            36
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-26-signals_ahead-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "signals_ahead",
+          "bbox": [
+            7,
+            6,
+            65,
+            65
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-27-pedestrians-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "pedestrians",
+          "bbox": [
+            18,
+            17,
+            196,
+            175
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-27-pedestrians-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "pedestrians",
+          "bbox": [
+            14,
+            11,
+            141,
+            125
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-28-children-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "children",
+          "bbox": [
+            6,
+            5,
+            28,
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-28-children-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "children",
+          "bbox": [
+            5,
+            6,
+            40,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-29-bicycles-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "bicycles",
+          "bbox": [
+            9,
+            8,
+            89,
+            80
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-29-bicycles-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "bicycles",
+          "bbox": [
+            8,
+            7,
+            89,
+            81
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-30-ice_snow-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "ice_snow",
+          "bbox": [
+            6,
+            5,
+            24,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-30-ice_snow-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "ice_snow",
+          "bbox": [
+            6,
+            6,
+            48,
+            48
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-31-animals-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "animals",
+          "bbox": [
+            5,
+            5,
+            28,
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-31-animals-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "animals",
+          "bbox": [
+            6,
+            6,
+            32,
+            28
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-32-end_restrictions-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_restrictions",
+          "bbox": [
+            5,
+            6,
+            33,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-32-end_restrictions-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_restrictions",
+          "bbox": [
+            5,
+            5,
+            37,
+            36
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-33-turn_right-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "turn_right",
+          "bbox": [
+            5,
+            6,
+            25,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-33-turn_right-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "turn_right",
+          "bbox": [
+            5,
+            5,
+            43,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-34-turn_left-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "turn_left",
+          "bbox": [
+            6,
+            5,
+            45,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-34-turn_left-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "turn_left",
+          "bbox": [
+            5,
+            6,
+            34,
+            34
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-35-straight-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "straight",
+          "bbox": [
+            7,
+            7,
+            62,
+            65
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-35-straight-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "straight",
+          "bbox": [
+            6,
+            5,
+            45,
+            44
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-36-straight_right-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "straight_right",
+          "bbox": [
+            7,
+            6,
+            66,
+            65
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-36-straight_right-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "straight_right",
+          "bbox": [
+            7,
+            8,
+            75,
+            76
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-37-straight_left-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "straight_left",
+          "bbox": [
+            6,
+            5,
+            27,
+            27
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-37-straight_left-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "straight_left",
+          "bbox": [
+            5,
+            6,
+            22,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-38-keep_right-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "keep_right",
+          "bbox": [
+            6,
+            5,
+            36,
+            37
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-38-keep_right-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "keep_right",
+          "bbox": [
+            5,
+            6,
+            21,
+            23
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-39-keep_left-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "keep_left",
+          "bbox": [
+            5,
+            6,
+            40,
+            46
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-39-keep_left-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "keep_left",
+          "bbox": [
+            5,
+            5,
+            37,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-40-roundabout-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "roundabout",
+          "bbox": [
+            6,
+            5,
+            42,
+            42
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-40-roundabout-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "roundabout",
+          "bbox": [
+            5,
+            6,
+            39,
+            41
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-41-end_no_passing-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_no_passing",
+          "bbox": [
+            6,
+            6,
+            47,
+            47
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-41-end_no_passing-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_no_passing",
+          "bbox": [
+            6,
+            6,
+            25,
+            25
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-42-end_no_passing_trucks-1.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_no_passing_trucks",
+          "bbox": [
+            6,
+            5,
+            30,
+            30
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sign-42-end_no_passing_trucks-2.png",
+      "group": "gtsrb-official-test",
+      "split": "test",
+      "objects": [
+        {
+          "label": "end_no_passing_trucks",
+          "bbox": [
+            5,
+            5,
+            29,
+            31
+          ]
+        }
+      ]
+    }
+  ]
+}
