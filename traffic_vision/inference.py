@@ -13,6 +13,16 @@ import numpy as np
 import onnxruntime as ort
 
 from traffic_vision.catalogue import GTSRB_LABELS, LIGHT_LABELS, catalogue, sign_info
+from traffic_vision.evidence import (
+    crop_box,
+    exposure_reference,
+    neutral_sign,
+    no_entry_bar,
+    overlaps_housing,
+    same_region,
+    sign_regions,
+    visible_lamp_color,
+)
 from traffic_vision.geometry import iou, letterbox, nms, restore_boxes
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -196,6 +206,9 @@ class Engine:
         refined = []
         for item in candidates:
             if item["model"] != "signs":
+                if item["id"] not in {sign_info(raw)["id"] for raw in GTSRB_LABELS}:
+                    item = neutral_sign(item, "This sign's meaning could not be verified. "
+                                        "Check it manually; the symbol may be unsupported.")
                 refined.append(item)
                 continue
             x1, y1, x2, y2 = item["bbox"]
@@ -222,9 +235,30 @@ class Engine:
         verified = [item for item in refined if item.get("verified")]
         return [item for item in refined if item["model"] != "urban" or not any(
             iou(item["bbox"], other["bbox"]) > .6
-            and (item["category"] != "Prohibition" or item["score"] < .90
+            and (item.get("proposed_category", item["category"]) != "Prohibition" or item["score"] < .90
                  or item["id"] == other["id"])
             for other in verified)]
+
+    def missed_signs(self, image, existing, housings, threshold):
+        additions = []
+        for region in sign_regions(image, housings):
+            if same_region(region["bbox"], existing + additions):
+                continue
+            crop, box = crop_box(image, region["bbox"], margin=.07)
+            info, score = self.classify_sign(crop)
+            compatible = ((info["category"] == "Direction" and region["face_color"] == "blue")
+                          or (info["category"] == "Prohibition" and region["face_color"] == "red")
+                          or (info["id"].startswith("speed_") and region["face_color"] == "red")
+                          or info["id"] in {"stop", "yield"})
+            if info["id"] == "no_entry":
+                compatible = no_entry_bar(crop)
+            item = {**info, "bbox": list(box), "score": score, "classifier_score": score,
+                    "kind": "sign", "model": "geometry+sign_classifier", "status": "detected"}
+            if score < max(.90, threshold) or not compatible:
+                item = neutral_sign(item, "A sign-like coloured face was located, but its meaning "
+                                    "is outside verified coverage or could not be identified reliably.")
+            additions.append(item)
+        return additions
 
     def lamps(self, image, threshold):
         session = self.session("signal_classifier")
@@ -238,38 +272,64 @@ class Engine:
         score = float(probabilities[index])
         label = self.manifest["signal_classifier"]["labels"][index]
         height, width = image.shape[:2]
-        if label == "unknown" or score < max(.60, threshold):
-            return [{"id": "light:unknown:unknown", "label": "Traffic signal — uncertain",
-                     "kind": "light", "category": "Signal", "color": "unknown", "shape": "unknown",
-                     "score": score, "bbox": [0, 0, width, height], "status": "uncertain",
-                     "model": "signal_classifier", "box_scope": "signal_housing",
-                     "meaning": "The signal classifier could not read a known state reliably."}]
         localized = self.raw_lamps(image, threshold)
         result = []
-        for token in label.split(","):
+        reference = exposure_reference(image)
+        for lamp in localized:
+            crop, _ = crop_box(image, lamp["bbox"], margin=0)
+            evidence = visible_lamp_color(crop, reference_brightness=reference)
+            if not evidence or lamp["status"] == "uncertain":
+                continue
+            if lamp["shape"] != "circle" and (lamp["shape_score"] < .90 or lamp["score"] < .85):
+                continue
+            lamp = dict(lamp)
+            lamp["model_color"] = lamp["color"]
+            lamp["color"] = evidence["color"]
+            lamp["id"] = f"light:{lamp['color']}:{lamp['shape']}"
+            lamp["label"] = lamp["color"].capitalize() + " " + lamp["label"].split(" ", 1)[1]
+            lamp["score"] = min(lamp["score"], evidence["agreement"])
+            if lamp["score"] < threshold:
+                continue
+            lamp["color_evidence"] = evidence
+            lamp["box_scope"] = "lamp"
+            lamp["model"] = "lamps+visible-colour"
+            lamp["meaning"] = "Localised lamp with visible bright colour evidence. Lane relevance is not determined."
+            result.append(lamp)
+        known_state = label != "unknown" and score >= max(.60, threshold)
+        for token in label.split(",") if known_state else []:
             # TIER IV's convention: a bare direction denotes a GREEN arrow; a bare
             # colour denotes a circular lamp. 'left,red' is not a red left arrow.
             color = token if token in {"red", "green", "yellow"} else "green"
             shape = "circle" if token in {"red", "green", "yellow"} else token
-            matches = [lamp for lamp in localized if lamp["color"] == color and lamp["shape"] == shape]
-            # Strong, localised arrows can refine a circular-only classifier class.
-            if shape == "circle" and len(label.split(",")) == 1:
-                arrows = [lamp for lamp in localized if lamp["color"] == color
-                          and lamp["shape"] in {"left", "right", "straight", "up_left", "up_right"}
-                          and lamp["shape_score"] >= .9 and lamp["score"] >= .85]
-                if arrows:
-                    best_arrow = max(arrows, key=lambda lamp: lamp["score"])
-                    shape, matches = best_arrow["shape"], [best_arrow]
-            matching = max(matches, key=lambda lamp: lamp["score"], default=None)
+            matches = [lamp for lamp in result if lamp["color"] == color and lamp["shape"] == shape]
+            if matches or result:
+                continue
+            # Whole-housing classifiers can invent arrow combinations on unfamiliar signals.
+            # Arrow outputs must have a localised, lit arrow; circular fallback requires
+            # visible colour agreement and cannot add an extra state to an already read housing.
+            evidence = visible_lamp_color(image, reference_brightness=reference, whole_housing=True)
+            circle_fallback = (shape == "circle" and len(label.split(",")) == 1
+                               and score >= max(.8, threshold) and np.ptp(image) >= 30)
+            consistent_evidence = evidence and evidence["color"] == color
+            if shape != "circle":
+                continue
+            if not consistent_evidence and not circle_fallback:
+                continue
             shape_label = "circular light" if shape == "circle" else shape.replace("_", " ") + " arrow"
             result.append({"id": f"light:{color}:{shape}", "label": f"{color.capitalize()} {shape_label}",
                            "kind": "light", "category": "Signal", "color": color, "shape": shape,
                            "score": score, "classifier_score": score,
-                           "bbox": matching["bbox"] if matching else [0, 0, width, height],
-                           "box_scope": "lamp" if matching else "signal_housing",
-                           "model": "signal_classifier+lamps", "status": "detected",
-                           "meaning": "Observed signal state. Lane relevance is not determined."})
-        return result
+                           "bbox": [0, 0, width, height], "color_evidence": evidence,
+                           "box_scope": "signal_housing",
+                           "model": "signal_classifier+visible-colour" if consistent_evidence else "signal_classifier",
+                           "status": "detected",
+                           "meaning": "Signal classification agrees with visible bright colour evidence." if consistent_evidence
+                           else "Whole-signal colour classification; individual lamp localisation was unavailable."})
+        return result or [{"id": "light:unknown:unknown", "label": "Traffic signal — uncertain",
+                           "kind": "light", "category": "Signal", "color": "unknown", "shape": "unknown",
+                           "score": score, "bbox": [0, 0, width, height], "status": "uncertain",
+                           "model": "signal_classifier", "box_scope": "signal_housing",
+                           "meaning": "No signal state had sufficient localised or visible colour evidence."}]
 
     def predict(self, image, mode="scene", threshold=0.55, detail=False):
         started = time.perf_counter()
@@ -295,7 +355,11 @@ class Engine:
                                 found["bbox"][2] += x
                                 if found["kind"] == "sign":
                                     signs.append(found)
+                signs = [item for item in signs if not overlaps_housing(item["bbox"], housings)]
                 detections = resolve_sign_conflicts(self.refine_signs(image, signs, threshold))
+                detections = [neutral_sign(item, item["meaning"]) if item["status"] == "uncertain"
+                              else item for item in detections]
+                detections += self.missed_signs(image, detections, housings, threshold)
                 for housing in housings[:20]:
                     x1, y1, x2, y2 = housing["bbox"]
                     # A small margin keeps lamp edges when the housing box is slightly tight.
@@ -319,7 +383,7 @@ class Engine:
         return {"detections": detections, "elapsed_ms": round((time.perf_counter() - started) * 1000),
                 "width": image.shape[1], "height": image.shape[0], "mode": mode,
                 "threshold": threshold, "detail": detail, "count": len(detections),
-                "model_version": "pretrained-1.0", "score_note": "Model scores are not measured accuracy."}
+                "model_version": "pretrained-1.1", "score_note": "Model scores are not measured accuracy."}
 
 
 def resolve_sign_conflicts(signs):

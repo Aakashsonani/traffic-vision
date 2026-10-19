@@ -45,8 +45,8 @@ of precision and recall. An abstained observation cannot count as a true positiv
 Negative scenes expose false positives. Recording/location groups and duplicate
 image checks reduce leakage across splits.
 
-A small development check accepted 36/36 sign crops correctly. It accepted 15/18
-signal colour crops correctly, with three uncertain results.
+A small v1.1 development check accepted 36/36 sign crops correctly. It accepted 14/18
+signal colour crops correctly, with four uncertain results.
 There were no incorrect accepted observations in that check. Upstream training
 overlap is unknown and the samples were used during development, so these results
 must not be presented as independent road-scene accuracy. See VALIDATION.md.

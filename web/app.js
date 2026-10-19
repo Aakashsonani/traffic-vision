@@ -108,8 +108,8 @@ function selectSource(source) {
 function selectFile(file) {
   if (!file) return;
   const isVideo = file.type.startsWith("video/") || /\.(mp4|webm)$/i.test(file.name);
-  const isImage = /^image\/(jpeg|png|webp|bmp)$/.test(file.type)
-    || /\.(jpe?g|png|webp|bmp)$/i.test(file.name);
+  const isImage = /^image\/(jpeg|pjpeg|png|webp|bmp)$/.test(file.type)
+    || /\.(jpe?g|jfif|png|webp|bmp)$/i.test(file.name);
   if (!isImage && !isVideo) return toast("Choose a JPG, PNG, WebP, BMP, MP4 or WebM file.");
   if (file.size > (isVideo ? 500 : 16) * 1024 * 1024) {
     return toast(isVideo ? "Choose a video smaller than 500 MB." : "Choose an image smaller than 16 MB.");
@@ -206,6 +206,19 @@ function seekVideo(time) {
   });
 }
 
+async function videoDuration(video) {
+  if (Number.isFinite(video.duration) && video.duration > 0) return video.duration;
+  // Browser-recorded WebM commonly omits its duration index. Seeking beyond the end
+  // lets the decoder discover its finite end without rejecting an otherwise valid file.
+  await seekVideo(1e9);
+  const duration = Number.isFinite(video.duration) ? video.duration : video.currentTime;
+  await seekVideo(0);
+  if (!Number.isFinite(duration) || duration <= 0 || duration >= 1e8) {
+    throw new Error("Video duration is unavailable. Try an MP4 with H.264 video.");
+  }
+  return duration;
+}
+
 async function requestRecognition(blob, generation, timestamp = null) {
   if (generation !== state.generation) return null;
   const data = new FormData();
@@ -244,8 +257,7 @@ async function runRecognition() {
     } else {
       const video = $("source-video");
       await waitForMedia(video);
-      const duration = state.isVideo ? video.duration : Infinity;
-      if (state.isVideo && (!Number.isFinite(duration) || duration <= 0)) throw new Error("Video duration is unavailable. Try another MP4.");
+      const duration = state.isVideo ? await videoDuration(video) : Infinity;
       video.controls = false;
       if (state.stream) await video.play();
       // Videos are sampled at one-second intervals; no frames are uploaded as a whole file.
@@ -299,7 +311,7 @@ function renderResult(result) {
     <div class="observation"><span class="obs-index">${String(index + 1).padStart(2, "0")}</span>
     <div class="obs-body"><div class="obs-title"><span class="obs-dot ${escapeHTML(item.color || "sign")}"></span>${escapeHTML(item.label)}${item.status === "uncertain" ? ' <span class="meta">UNCERTAIN</span>' : ""}</div>
     <p>${escapeHTML(item.meaning)}</p>${item.alternatives ? `<p class="alternatives">Also predicted: ${escapeHTML(item.alternatives.join(", "))}</p>` : ""}</div>
-    <span class="obs-score ${item.status === "uncertain" ? "uncertain" : ""}" title="Model score; not measured accuracy">${Math.round(item.score * 100)}%</span></div>`).join("")
+    <span class="obs-score ${item.status === "uncertain" ? "uncertain" : ""}" title="Model score; not measured accuracy">${item.id === "unknown_sign" ? "Unverified" : Math.round(item.score * 100) + "%"}</span></div>`).join("")
     : '<div class="empty-results"><span>—</span><p>No confident observations.<small>Try a clearer image, a close-up signal, or a lower score threshold.</small></p></div>';
   $("download-image").disabled = false;
   $("download-json").disabled = false;
@@ -333,6 +345,14 @@ function renderCatalogue() {
   $("library-count").textContent = `${filtered.length} SIGNS`;
   $("sign-grid").innerHTML = filtered.length ? filtered.map((sign) => `<article class="sign-card" data-category="${escapeHTML(sign.category)}"><div class="sign-glyph" aria-hidden="true">${escapeHTML(signGlyph(sign))}</div><span class="meta">${escapeHTML(sign.category.toUpperCase())}</span><h3>${escapeHTML(sign.label)}</h3><p>${escapeHTML(sign.meaning)}</p></article>`).join("")
     : '<p class="category-empty">No signs match this search.</p>';
+  document.querySelectorAll(".sign-card").forEach((card, index) => {
+    if (filtered[index].review_required) {
+      const note = document.createElement("small");
+      note.className = "review-note";
+      note.textContent = "Needs manual verification";
+      card.appendChild(note);
+    }
+  });
 }
 
 async function loadEvaluation() {

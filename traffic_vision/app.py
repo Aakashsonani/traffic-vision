@@ -15,7 +15,7 @@ from fastapi.staticfiles import StaticFiles
 from PIL import Image, ImageOps, UnidentifiedImageError
 from starlette.concurrency import run_in_threadpool
 
-from traffic_vision.catalogue import catalogue
+from traffic_vision.catalogue import GTSRB_LABELS, catalogue, sign_info
 from traffic_vision.inference import Engine, ModelsUnavailable
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -41,7 +41,9 @@ def health():
 
 @app.get("/api/catalogue")
 def get_catalogue():
-    return {"signs": catalogue(), "colors": ["red", "yellow", "green"],
+    verified_ids = {sign_info(label)["id"] for label in GTSRB_LABELS}
+    signs = [{**item, "review_required": item["id"] not in verified_ids} for item in catalogue()]
+    return {"signs": signs, "colors": ["red", "yellow", "green"],
             "lamp_shapes": ["circle", "left", "right", "straight", "up_left", "up_right",
                             "down", "down_left", "down_right", "u_turn", "pedestrian", "cross"],
             "scope": "European and urban sign designs; local country accuracy is unmeasured."}
@@ -85,7 +87,9 @@ def annotate(image, detections):
         color = (150, 110, 40) if item["status"] == "uncertain" else palette.get(
             item.get("color"), (39, 92, 166))
         cv2.rectangle(rendered, (x1, y1), (x2, y2), color, 2)
-        title = f"{index + 1}. {item['label']} {item['score']:.0%}"
+        title = f"{index + 1}. {item['label']}"
+        if item["id"] != "unknown_sign":
+            title += f" {item['score']:.0%}"
         title = title.encode("ascii", errors="replace").decode()
         font_scale = max(0.4, min(0.7, image.shape[1] / 1600))
         (tw, th), _ = cv2.getTextSize(title, cv2.FONT_HERSHEY_SIMPLEX, font_scale, 1)

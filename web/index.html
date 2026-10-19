@@ -37,7 +37,7 @@
             <div class="input-tabs" role="tablist" aria-label="Input source"><button id="tab-upload" role="tab" aria-selected="true" class="active" data-source="upload">Image / video</button><button id="tab-camera" role="tab" aria-selected="false" data-source="camera">Live camera</button></div>
             <div id="upload-area">
               <label id="dropzone" class="dropzone" for="file-input"><span class="upload-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/></svg></span><strong>Drop a road image or video</strong><span>or <b>browse files</b> from your computer</span><small>JPG, PNG, WEBP · MP4, WEBM</small></label>
-              <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/bmp,video/mp4,video/webm" class="visually-hidden">
+              <input type="file" id="file-input" accept=".jfif,image/jpeg,image/png,image/webp,image/bmp,video/mp4,video/webm" class="visually-hidden">
               <div id="selected-file" class="selected-file hidden"><span id="file-name"></span><button id="clear-file" aria-label="Remove selected file">×</button></div>
             </div>
             <div id="camera-area" class="hidden camera-area"><div class="camera-placeholder"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="12" height="12" rx="2"/><path d="m15 10 6-3v10l-6-3"/></svg><strong>Your camera, your device.</strong><p>Allow browser camera access to scan a signal or sign.</p></div><button class="button secondary" id="enable-camera">Enable camera</button></div>

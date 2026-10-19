@@ -41,6 +41,11 @@ coverage. Low-score/ambiguous objects can be uncertain; unknown classes are not
 guaranteed to be rejected. Confidence is a model score, not measured accuracy.
 If weights are missing, show setup instructions and fail inference clearly.
 
+Version 1.1 tightens the fallback: detector-only classes remain unverified; neutral
+labels replace uncertain semantic guesses. Geometric sign-face proposals can recover
+missed signs, while lamp predictions require localised bright-colour evidence. This
+does not expand the trained taxonomy or establish unknown-class rejection accuracy.
+
 ## Scope and remaining validation
 
 The bundled sign models mix European and urban sign designs. Country-specific

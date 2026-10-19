@@ -4,7 +4,7 @@ The release uses existing pretrained weights. No custom model training or indepe
 local-road accuracy validation has been completed. Model scores displayed in the app
 are not measured accuracy.
 
-## Public sample check
+## Version 1.0 public sample check
 
 `scripts/check_pretrained.py`, seed 42, default threshold 0.55. The run covers four
 random official GTSRB test crops in each of nine selected sign classes: turn right,
@@ -30,6 +30,29 @@ The initial detector-only check confused combined directions. Adding the separat
 signal classifier improved abstention and colour recognition compared with using the
 lamp localizer alone. These changes were developed against the sample check, so it
 cannot serve as a final held-out test.
+
+## Version 1.1 regression changes
+
+A user-supplied composite image exposed a missed no-entry sign, unsupported symbols
+reported as no-right-turn signs, a false sign box enclosing a signal housing, and a
+hallucinated green arrow. The updated pipeline recovers the no-entry face, suppresses
+housing/sign overlap, reports unverified symbols neutrally, and requires localized
+bright-colour evidence for lamp states. The two lit circular lamps are read as red
+and yellow; the dark green lens does not establish an active green lamp.
+
+The private uploaded photo is not redistributed in this public repository. Synthetic
+regression tests cover the same failure mechanisms. The three unfamiliar symbols
+were not added as trained classes. Detector-only classes now require manual review.
+For dim/tiny crops with no useful lamp localisation, a high-confidence single circular
+state can fall back to the original classifier. An arrow combination cannot use that
+fallback. Brightness checks adapt to the housing exposure; a fixed brightness cutoff
+rejected too many dim signals during development.
+
+On the same development sample selection, v1.1 accepts all 36 sign crops correctly
+and 14/18 signal crops correctly, with four uncertain signal results and no incorrect
+accepted states. This is a stricter acceptance rate than v1.0. These samples were used
+during development and have unknown upstream training overlap. The result is not
+independent accuracy, unknown-class rejection accuracy, or real-road validation.
 
 ## Manual image pack
 

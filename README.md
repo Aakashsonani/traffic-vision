@@ -18,8 +18,8 @@ powershell -ExecutionPolicy Bypass -File setup.ps1
 Open **http://127.0.0.1:8765**. Keep the server terminal running. Stop with Ctrl+C.
 `setup.ps1` installs locked dependencies with uv when available, otherwise uses pip.
 It downloads approximately 255 MB of checksummed models; the first inference verifies
-their hashes and loads them. If the GitHub repository is private, sign in with
-`gh auth login` so the downloader can retrieve its converted model release assets.
+their hashes and loads them. The repository and model releases are public; no GitHub
+account is required to download them.
 
 Without the Windows launcher:
 
@@ -46,10 +46,12 @@ an NVIDIA GPU is not required. Use Chrome or Edge for camera/video features.
 
 - **Full scene:** bounding boxes, explicit sign meanings, model scores and uncertain states.
 - **Directions:** left, right, straight, keep-left/right, combined directions, and roundabouts.
-- **Prohibitions:** no left/right/U-turn, no entry, no parking/stopping and overtaking restrictions.
+- **Prohibitions:** no entry and overtaking restrictions. Detector-only classes such as
+  no left/right/U-turn and no parking/stopping are proposed but marked unverified.
 - **Other signs:** STOP, give way, posted speed values, hazards, crossings and information signs.
-- **Close-up signal:** colour and supported arrow combinations. A red circle and a green
-  left arrow stay separate observations, rather than becoming a “red left arrow.”
+- **Close-up signal:** colour and supported arrow combinations. Arrows need a localized
+  lit arrow; a whole-housing classifier guess alone is marked uncertain. Multiple
+  localized lamps stay separate observations.
 - **Live webcam:** browser permission required; frames processed locally one at a time.
 - **Video:** MP4/WebM decoded in the browser and scanned at one-second intervals,
   up to 1,000 frames per scan. This is sampled video recognition, not guaranteed real-time FPS.
@@ -88,17 +90,28 @@ See [model provenance](THIRD_PARTY_NOTICES.md) and [model-manifest.json](model-m
 ## Accuracy and scope
 
 This release uses pretrained models, **not newly trained custom weights**. In a small
-public-sample check, 36/36 selected sign crops were correctly accepted;
+v1.0 development check, 36/36 selected sign crops were correctly accepted;
 15/18 signal crops were correctly accepted and three were uncertain.
-There were no incorrect accepted labels in that check. **This is not an independent
+There were no incorrect accepted labels in that v1.0 check. Version 1.1 adds stricter
+sign verification and requires visible lamp evidence, so its results can differ.
+**This is not an independent
 road-scene accuracy result**: training overlap is unknown, and the check was used
 during development. See [the full validation record](docs/VALIDATION.md).
 
+The v1.1 check accepts 36/36 sign crops and 14/18 signal crops correctly, with four
+uncertain signal results and no incorrect accepted labels on that small selection.
 95% precision and 90% recall are development targets. Accuracy on Indian roads,
 arrow lamps, all prohibition classes, night scenes, and unfamiliar sign designs has
 not been established. High model scores do not guarantee correctness. The app cannot
 reliably reject every unknown sign, determine lane relevance, read painted road arrows
 or arbitrary text boards, or combine observations into driving decisions.
+
+Version 1.1 uses compact coloured sign-face proposals to recover missed objects,
+requires a characteristic bar for recovered no-entry signs, and flags unverified
+symbols with a neutral label. Localised lamp evidence can preserve both red and
+yellow observations; an unsupported whole-housing arrow prediction is not accepted
+without a corresponding lit arrow. High-confidence circular-only states can fall
+back to the original classifier on tiny/dim crops. These checks may increase abstention.
 
 ## Evaluation and training
 

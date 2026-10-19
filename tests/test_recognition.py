@@ -81,7 +81,7 @@ def test_nms_retains_separate_nearby_signs():
     assert len(nms(rows)) == 2
 
 
-def test_signal_classifier_does_not_apply_softmax_twice_or_misread_red_left(monkeypatch):
+def test_unlocalized_classifier_arrow_is_not_accepted_or_softmaxed_again(monkeypatch):
     engine = Engine()
 
     class FakeSession:
@@ -96,7 +96,8 @@ def test_signal_classifier_does_not_apply_softmax_twice_or_misread_red_left(monk
     monkeypatch.setattr(engine, "session", lambda _: FakeSession())
     monkeypatch.setattr(engine, "raw_lamps", lambda *_: [])
     result = engine.lamps(np.zeros((32, 96, 3), dtype=np.uint8), .55)
-    assert {item["id"] for item in result} == {"light:green:left", "light:red:circle"}
+    assert {item["id"] for item in result} == {"light:unknown:unknown"}
+    assert result[0]["status"] == "uncertain"
     assert result[0]["score"] == pytest.approx(.99)
 
 
