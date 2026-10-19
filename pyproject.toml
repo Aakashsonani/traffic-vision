@@ -1,0 +1,27 @@
+[project]
+name = "traffic-vision"
+version = "1.0.0"
+description = "Local traffic sign, traffic light and directional lamp recognition laboratory."
+requires-python = ">=3.11,<3.14"
+dependencies = [
+  "fastapi>=0.115,<1", "uvicorn[standard]>=0.34,<1",
+  "python-multipart>=0.0.20,<1", "pillow>=11.1,<13",
+  "numpy>=2,<3", "opencv-python-headless>=4.11,<5",
+  "onnxruntime>=1.20,<2", "httpx>=0.28,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10", "ruff>=0.11,<1", "playwright>=1.50,<2"]
+training = ["ultralytics>=8.3,<9", "onnx>=1.17,<2"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["outputs", "models", "data"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

@@ -1,0 +1,21 @@
+{
+  "name": "Replace with your road-scene dataset",
+  "scope": "Specify country, camera, lighting and recording dates",
+  "images": [
+    {
+      "file": "images/junction-01.jpg",
+      "group": "drive-01",
+      "split": "test",
+      "objects": [
+        {"label": "turn_left", "bbox": [100, 100, 180, 180]},
+        {"label": "light:green:straight", "bbox": [300, 60, 325, 90]}
+      ]
+    },
+    {
+      "file": "images/negative-scene.jpg",
+      "group": "drive-02",
+      "split": "test",
+      "objects": []
+    }
+  ]
+}

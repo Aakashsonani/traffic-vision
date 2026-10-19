@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f1">
+  <title>Traffic Vision — Recognition workspace</title>
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <aside class="sidebar">
+    <a class="brand" href="/" aria-label="Traffic Vision home"><span class="brand-mark"><i></i><i></i><i></i></span><span>traffic<span class="brand-light">vision</span><small>COMPUTER VISION LAB</small></span></a>
+    <div class="workspace-tag"><span class="tiny-dot"></span> Local workspace <span class="shortcut">01</span></div>
+    <span class="nav-caption">WORKSPACE</span>
+    <nav aria-label="Main navigation">
+      <button class="nav-item active" data-page="analyzer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8V4h4m8 0h4v4M4 16v4h4m8 0h4v-4M7 12h10M12 7v10"/></svg>Recognition studio</button>
+      <button class="nav-item" data-page="library"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6"/><rect x="14" y="4" width="6" height="6"/><rect x="4" y="14" width="6" height="6"/><rect x="14" y="14" width="6" height="6"/></svg>Sign catalogue <span class="nav-count" id="nav-count">—</span></button>
+      <button class="nav-item" data-page="evaluation"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4v16h16M8 16v-4m5 4V7m5 9V9"/></svg>Evaluation</button>
+      <button class="nav-item" data-page="about"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 11v6m0-10v1"/></svg>Project notes</button>
+    </nav>
+    <div class="sidebar-bottom"><div class="runtime-status"><span class="tiny-dot" id="model-dot"></span><strong id="model-status">Checking models</strong></div><p>Inference runs on this computer.<br>Your images stay here.</p><div class="version">PYTHON · ONNX RUNTIME <span>v1.0</span></div></div>
+  </aside>
+
+  <div class="main-shell">
+    <header class="topbar"><span>Workspace <span class="slash">/</span> <strong id="breadcrumb">Recognition studio</strong></span><span class="local-badge"><span class="tiny-dot"></span>LOCAL INFERENCE</span></header>
+    <main>
+      <section id="page-analyzer" class="page active">
+        <div class="page-intro"><div><span class="eyebrow">SEE THE SIGNAL. UNDERSTAND THE SIGN.</span><h1>A clearer view of the road.</h1><p>Recognize traffic signs, signal colours, and directional arrows in one workspace.</p></div><span class="edition">RECOGNITION STUDIO<br><b>01 / 04</b></span></div>
+        <div id="setup-alert" class="alert hidden" role="alert">Model files are missing. Run <code>setup.ps1</code>, then restart the app.</div>
+        <div class="capabilities"><div><span class="cap-icon signal-icon"><i></i><i></i><i></i></span><span><strong>Traffic lights</strong><small>Red, yellow & green</small></span></div><div><span class="cap-icon">↰</span><span><strong>Directional signals</strong><small>Left, right & straight</small></span></div><div><span class="cap-icon sign-icon">!</span><span><strong>Road signs</strong><small id="class-caption">Mandatory, warning & prohibition</small></span></div><div class="cap-private"><span class="cap-icon">⌘</span><span><strong>On your device</strong><small>Works offline after setup</small></span></div></div>
+
+        <div class="studio-grid">
+          <section class="panel source-panel" aria-labelledby="source-heading">
+            <div class="panel-heading"><h2 id="source-heading">01 <span>Choose your input</span></h2><span class="meta">SOURCE</span></div>
+            <div class="input-tabs" role="tablist" aria-label="Input source"><button id="tab-upload" role="tab" aria-selected="true" class="active" data-source="upload">Image / video</button><button id="tab-camera" role="tab" aria-selected="false" data-source="camera">Live camera</button></div>
+            <div id="upload-area">
+              <label id="dropzone" class="dropzone" for="file-input"><span class="upload-symbol"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m-4 4 4-4 4 4M4 15v5h16v-5"/></svg></span><strong>Drop a road image or video</strong><span>or <b>browse files</b> from your computer</span><small>JPG, PNG, WEBP · MP4, WEBM</small></label>
+              <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp,image/bmp,video/mp4,video/webm" class="visually-hidden">
+              <div id="selected-file" class="selected-file hidden"><span id="file-name"></span><button id="clear-file" aria-label="Remove selected file">×</button></div>
+            </div>
+            <div id="camera-area" class="hidden camera-area"><div class="camera-placeholder"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="12" height="12" rx="2"/><path d="m15 10 6-3v10l-6-3"/></svg><strong>Your camera, your device.</strong><p>Allow browser camera access to scan a signal or sign.</p></div><button class="button secondary" id="enable-camera">Enable camera</button></div>
+            <div class="field-row"><label for="scan-mode">Recognition mode</label><select id="scan-mode"><option value="scene">Full road scene</option><option value="signal">Close-up traffic signal</option></select><p class="field-help" id="mode-help">Find signs and signal housings, then read individual lamps.</p></div>
+            <div class="threshold-row"><label for="threshold">Minimum model score</label><output id="threshold-value" for="threshold">55%</output></div><input id="threshold" type="range" min="25" max="95" value="55" step="5"><p class="field-help">Higher scores reduce weak predictions but may miss small objects.</p>
+            <label class="checkbox-row"><input type="checkbox" id="detail-mode"><span>Inspect small signs<small>Extra image crops · slower on CPU</small></span></label>
+            <button id="analyze-button" class="button primary" disabled><span>Run recognition</span><span aria-hidden="true">↗</span></button>
+            <button id="stop-button" class="button secondary hidden">Stop scanning</button>
+            <div class="sample-header"><strong>Start with an example</strong><span>LOCAL FILES</span></div><div id="samples" class="samples"><p class="field-help">Loading sample images…</p></div>
+          </section>
+
+          <section class="panel preview-panel" aria-labelledby="preview-heading">
+            <div class="panel-heading"><h2 id="preview-heading">02 <span>Recognition preview</span></h2><span class="preview-status" id="preview-status"><span class="tiny-dot"></span>Waiting for input</span></div>
+            <div class="preview-stage" id="preview-stage">
+              <div id="empty-preview" class="empty-preview"><img src="/static/studio-illustration.svg" alt="Illustration of left, straight, right, and stop signs alongside a traffic signal"><span class="eyebrow">EVERY SIGN HAS A MEANING</span><h3>Bring the road into focus.</h3><p>Add an image, try an example, or use your camera.<br>Your detections will appear here.</p></div>
+              <img id="preview-image" class="hidden" alt="Selected input image">
+              <video id="source-video" class="hidden" playsinline muted controls></video>
+              <canvas id="capture-canvas" class="hidden"></canvas>
+              <div id="busy-overlay" class="busy-overlay hidden"><span class="spinner"></span><strong>Reading the road…</strong><span id="busy-note">First inference also verifies and loads the models.</span></div>
+            </div>
+            <div class="preview-toolbar"><span id="image-info">Your input stays on this device</span><div><button id="toggle-original" class="text-button" disabled>Show original</button><button id="download-image" class="text-button" disabled>Save image ↓</button></div></div>
+            <div class="results-heading"><h3>Observations <span id="result-count">0</span></h3><span id="inference-time">READY WHEN YOU ARE</span></div>
+            <div id="results" class="results" aria-live="polite"><div class="empty-results"><span>—</span><p>No observations yet.<small>Run recognition to see labels, scores, and sign meanings.</small></p></div></div>
+            <div class="results-footer"><span>Scores describe model output, not measured accuracy.</span><button id="download-json" class="text-button" disabled>Export JSON ↗</button></div>
+          </section>
+        </div>
+        <div class="bottom-note"><span class="note-mark">i</span><p><strong>A recognition tool for learning and experimentation.</strong> Results describe visible signs and lamps. The project does not determine which signal applies to a lane.</p><span class="meta">LOCAL FIRST / PYTHON POWERED</span></div>
+      </section>
+
+      <section id="page-library" class="page"><div class="page-intro"><div><span class="eyebrow">KNOW WHAT THE MODEL CAN READ</span><h1>The sign catalogue.</h1><p>Distinct meanings, explicit classes. Turn left, keep left, and no left turn stay separate.</p></div></div><div class="library-toolbar"><label class="search-box"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10" cy="10" r="6"/><path d="m15 15 5 5"/></svg><input type="search" id="search-signs" placeholder="Find a sign or meaning…" aria-label="Search signs"></label><select id="category-filter" aria-label="Filter by category"><option value="all">All categories</option><option>Direction</option><option>Prohibition</option><option>Regulatory</option><option>Warning</option><option>Information</option></select><span id="library-count" class="meta"></span></div><div id="sign-grid" class="sign-grid"></div><div class="panel scope-panel"><h2>Illuminated signals</h2><p>Red, yellow and green lamps are read separately from their shape: circular, left, right, straight, diagonal, U-turn, pedestrian or cross. Multiple lamps in the same housing remain separate observations.</p><p class="muted">The sign catalogue combines European and urban model classes. The classifier supports speed limits of 20, 30, 50, 60, 70, 80, 100 and 120 km/h; road-scene detection of each needs evaluation. Painted road arrows and text direction boards are outside this release.</p></div></section>
+
+      <section id="page-evaluation" class="page"><div class="page-intro"><div><span class="eyebrow">EVIDENCE BEFORE ACCURACY CLAIMS</span><h1>Measure what matters.</h1><p>Separate software verification from recognition performance on unseen road scenes.</p></div></div><div id="evaluation-content"></div><div class="panel scope-panel"><h2>Run a representative evaluation</h2><p>Label every supported object in your own road images, including negative scenes. Group images by recording or location before creating train, validation and test splits.</p><code class="command">python scripts/evaluate.py --dataset data/evaluation.json --split test</code><p class="muted">The evaluator matches the exact class and bounding-box overlap. A missed object counts as a false negative; an uncertain result cannot count as a correct recognition.</p><a href="/docs" target="_blank" rel="noopener" class="inline-link">Explore the local API ↗</a></div></section>
+
+      <section id="page-about" class="page"><div class="page-intro"><div><span class="eyebrow">TRAFFIC VISION / PROJECT NOTES</span><h1>Built to be understood.</h1><p>A local Python project for studying traffic sign and signal recognition.</p></div></div><div class="about-grid"><div class="panel scope-panel"><span class="eyebrow">01 / THE PIPELINE</span><h2>Detect. Decode. Explain.</h2><p>Two specialist YOLO detectors find road signs. A ResNet classifier verifies sign crops. A COCO detector locates signal housings, and TIER IV classifiers read their colours and arrows.</p><p>Every observation includes its bounding box, model score, and meaning. Overlapping contradictory sign predictions are marked uncertain.</p></div><div class="panel scope-panel"><span class="eyebrow">02 / THE RUNTIME</span><h2>Python, on your computer.</h2><p>FastAPI serves the interface. NumPy and OpenCV prepare images; ONNX Runtime performs CPU inference. After installation and model download, no internet connection or API key is needed.</p><p>Camera and video frames are processed one at a time. Uploaded images remain in memory and are not written to disk by the server.</p></div><div class="panel scope-panel"><span class="eyebrow">03 / THE BOUNDARIES</span><h2>Keep the scope honest.</h2><p>Pretrained models are included through reproducible downloads. This release has not been fine-tuned or validated on your local roads. Unknown designs can still be assigned a familiar class.</p><p>Small, blurred, obstructed, or unfamiliar signs need additional data. This project reports observations and does not resolve lane relevance or provide driving decisions.</p></div><div class="panel scope-panel"><span class="eyebrow">04 / THE NEXT EXPERIMENT</span><h2>Improve with evidence.</h2><p>Collect representative labelled scenes, run the evaluator, and inspect each direction/prohibition confusion. Fine-tune using the training script with image flips disabled.</p><p>Version the dataset and weights together. Keep the final test recording separate from training and threshold selection.</p></div></div></section>
+      <footer class="page-footer"><span>TRAFFIC VISION</span><span>Built for a closer look.</span><span>PYTHON PROJECT · 2026</span></footer>
+    </main>
+  </div>
+  <div id="toast" class="toast hidden" role="status"></div>
+</body>
+</html>

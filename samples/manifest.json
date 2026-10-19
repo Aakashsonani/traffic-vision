@@ -1,0 +1,60 @@
+[
+  {
+    "file": "directions.jpg",
+    "label": "Left / straight / right",
+    "mode": "scene",
+    "description": "Teaching board made from GTSRB photographs; not a road-scene benchmark.",
+    "source": "https://benchmark.ini.rub.de/gtsrb_dataset.html",
+    "source_files": [
+      "02794.ppm",
+      "12231.ppm",
+      "10131.ppm"
+    ]
+  },
+  {
+    "file": "combined-directions.jpg",
+    "label": "Combined directions",
+    "mode": "scene",
+    "description": "Teaching board made from GTSRB photographs; not a road-scene benchmark.",
+    "source": "https://benchmark.ini.rub.de/gtsrb_dataset.html",
+    "source_files": [
+      "01184.ppm",
+      "08045.ppm"
+    ]
+  },
+  {
+    "file": "regulatory.jpg",
+    "label": "Stop / no entry",
+    "mode": "scene",
+    "description": "Teaching board made from GTSRB photographs; not a road-scene benchmark.",
+    "source": "https://benchmark.ini.rub.de/gtsrb_dataset.html",
+    "source_files": [
+      "09969.ppm",
+      "00144.ppm"
+    ]
+  },
+  {
+    "file": "signal-red.jpg",
+    "label": "Red signal",
+    "mode": "signal",
+    "description": "TIER IV public tutorial signal crop. Use close-up signal mode.",
+    "source": "https://autoware-files.s3.us-west-2.amazonaws.com/dataset/traffic_light_sample_dataset.tar.gz",
+    "source_file": "traffic_light_sample_dataset/val/red/13.jpg"
+  },
+  {
+    "file": "signal-yellow.jpg",
+    "label": "Yellow signal",
+    "mode": "signal",
+    "description": "TIER IV public tutorial signal crop. Use close-up signal mode.",
+    "source": "https://autoware-files.s3.us-west-2.amazonaws.com/dataset/traffic_light_sample_dataset.tar.gz",
+    "source_file": "traffic_light_sample_dataset/val/yellow/69.jpg"
+  },
+  {
+    "file": "signal-green.jpg",
+    "label": "Green signal",
+    "mode": "signal",
+    "description": "TIER IV public tutorial signal crop. Use close-up signal mode.",
+    "source": "https://autoware-files.s3.us-west-2.amazonaws.com/dataset/traffic_light_sample_dataset.tar.gz",
+    "source_file": "traffic_light_sample_dataset/val/green/75.jpg"
+  }
+]
