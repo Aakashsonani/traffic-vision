@@ -8,7 +8,6 @@ import subprocess
 import sys
 import time
 import urllib.request
-from urllib.error import HTTPError
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -28,20 +27,18 @@ def download(url, destination, expected):
     for attempt in range(3):
         try:
             print(f"Downloading {destination.name} ...", flush=True)
-            request = urllib.request.Request(url, headers={"User-Agent": "TrafficVision/1.0"})
-            try:
-                with urllib.request.urlopen(request, timeout=120) as response, temp.open("wb") as out:
+            if url.startswith("https://github.com/Aakashsonani/traffic-vision/releases/download/"):
+                if not shutil.which("gh"):
+                    raise RuntimeError("Install GitHub CLI and run gh auth login for private model assets.")
+                subprocess.run(["gh", "release", "download", "models-v1",
+                                "--repo", "Aakashsonani/traffic-vision", "--pattern", destination.name,
+                                "--output", str(temp), "--clobber"], check=True,
+                               capture_output=True, timeout=300)
+            else:
+                request = urllib.request.Request(url, headers={"User-Agent": "TrafficVision/1.0"})
+                with urllib.request.urlopen(request, timeout=60) as response, temp.open("wb") as out:
                     while chunk := response.read(1024 * 1024):
                         out.write(chunk)
-            except HTTPError as exc:
-                if (exc.code in {401, 403, 404} and shutil.which("gh") and url.startswith(
-                        "https://github.com/Aakashsonani/traffic-vision/releases/download/")):
-                    # Private release assets use the user's existing GitHub CLI login.
-                    subprocess.run(["gh", "release", "download", "models-v1",
-                                    "--repo", "Aakashsonani/traffic-vision", "--pattern", destination.name,
-                                    "--output", str(temp), "--clobber"], check=True, capture_output=True)
-                else:
-                    raise
             if sha256(temp) != expected:
                 raise ValueError(f"Checksum mismatch for {destination.name}; file not installed")
             os.replace(temp, destination)

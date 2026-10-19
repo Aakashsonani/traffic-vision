@@ -30,6 +30,7 @@ def test_negative_scene_false_positive_counts():
     metrics = ObjectMetrics()
     metrics.add([], [{"id": "stop", "bbox": [0, 0, 20, 20], "score": .9}])
     assert metrics.report()["fp"] == 1
+    assert not metrics.report()["per_class_targets_met"]
 
 
 def test_recording_group_leakage_is_rejected():

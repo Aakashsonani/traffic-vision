@@ -103,7 +103,7 @@ class ObjectMetrics:
                 "accepted_fraction": ratio(self.proposed - self.rejected, self.proposed),
                 "per_class": rows, "targets": {"precision": .95, "recall": .90},
                 "passed_targets": (precision or 0) >= .95 and (recall or 0) >= .90,
-                "per_class_targets_met": bool(rows) and all(
+                "per_class_targets_met": any(row["support"] for row in rows) and all(
                     (row["precision"] or 0) >= .95 and (row["recall"] or 0) >= .90
                     for row in rows if row["support"]),
                 "classes_with_support": sum(row["support"] > 0 for row in rows),

@@ -4,6 +4,8 @@ A Python college project for **traffic signs, traffic lights and directional sig
 recognition**, running locally in your browser. No inference API, API key or cloud
 upload is used. After setup, inference works offline.
 
+![Traffic Vision recognition workspace](docs/screenshots/studio.png)
+
 ## Start on Windows
 
 Python 3.12 is recommended. Open PowerShell in the project folder:
